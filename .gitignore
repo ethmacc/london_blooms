@@ -1,0 +1,15 @@
+# Learner profile (personal learning context)
+/devpost/learner-profile.md
+
+# Environment variables (never commit secrets)
+.env
+.env.local
+.env.*.local
+
+# Editor directories
+.vscode
+.idea
+
+# OS files
+.DS_Store
+Thumbs.db
