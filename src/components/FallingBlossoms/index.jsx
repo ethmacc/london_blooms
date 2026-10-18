@@ -23,9 +23,9 @@ function FallingBlossoms() {
           key={blossom.id}
           className="blossom"
           style={{
-            '--blossom-left': blossom.left,
-            '--blossom-delay': blossom.delay,
-            '--blossom-duration': blossom.duration,
+            '--blossom-left': `${blossom.left}%`,
+            '--blossom-delay': `${blossom.delay}s`,
+            '--blossom-duration': `${blossom.duration}s`,
             '--blossom-scale': blossom.scale,
           }}
         />

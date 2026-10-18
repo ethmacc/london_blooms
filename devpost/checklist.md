@@ -55,7 +55,7 @@ Build mode: fast
   Learner check: Click the navbar and navigate to the History page; read the historical content.
   Commit: `Add History page with navigation`
 
-- [ ] **4. Falling cherry blossoms animation**
+- [x] **4. Falling cherry blossoms animation**
   Becomes usable: Cherry blossom particles fall from top to bottom across the map, adding atmosphere.
   Why now: Adds the classic game aesthetic the learner specifically requested for the visual feel.
   PRD ref: `prd.md > Look and Feel`, `spec.md > Cozy Classic Game Visual Design`
@@ -139,3 +139,4 @@ Activity mode: [live app and editor, explicit static fallback, focused alternati
 - Map pins use a single GeoJSON feature layer rather than separate DOM Pin components — the rendered map supports feature-state hover and keeps pins aligned as the map zooms.
 - History content is kept in the specified local JSON file and paraphrased from the official Royal Parks source; the original embedded copy contained unsupported historical claims.
 - Error handling now treats non-OK prediction responses and map setup/style-load failures as app errors so the planned fallback can appear.
+- Live inspection showed the blossom animation received unitless CSS timing values and did not run; the component now supplies valid seconds and percentage units.
