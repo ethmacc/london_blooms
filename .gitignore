@@ -13,3 +13,16 @@
 # OS files
 .DS_Store
 Thumbs.db
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Public data (served as static, not source)
+public/data/
+
+# Build artifacts
+output.txt
