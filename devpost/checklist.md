@@ -25,7 +25,7 @@ Build mode: fast
 
 ## Slices
 
-- [ ] **1. Project scaffold with prediction and London map**
+- [x] **1. Project scaffold with prediction and London map**
   Becomes usable: A working React app that shows the predicted bloom date and a MapLibre map of London centered on the cherry blossom locations.
   Why now: Proves the core prediction and map work together on day one — the unique kernel is visible and interactive immediately.
   PRD ref: `prd.md > The Core Journey` (steps 1-2), `scope.md > What "Working" Looks Like`
@@ -94,7 +94,7 @@ Build mode: fast
      At each planned checkpoint, the learner tries the app and gives feedback.
      Check a box only after the learner reports back and issues are resolved. -->
 
-- [ ] Early usable behavior explored — slice 1 (prediction + map)
+- [x] Early usable behavior explored — slice 1 (prediction + map)
 - [ ] Final kick-the-tires exploration and feedback completed
 
 ## Final Review
