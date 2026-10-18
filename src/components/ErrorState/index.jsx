@@ -1,3 +1,4 @@
+import React from 'react'
 import './error-state.css'
 
 function ErrorState({ onRetry }) {

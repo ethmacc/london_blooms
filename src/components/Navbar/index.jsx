@@ -1,3 +1,4 @@
+import React from 'react'
 import './navbar.css'
 
 function Navbar({ onNav }) {

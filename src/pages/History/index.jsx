@@ -1,3 +1,4 @@
+import React from 'react'
 import './history.css'
 
 function History({ onBack }) {

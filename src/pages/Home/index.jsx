@@ -1,3 +1,4 @@
+import React from 'react'
 import './home.css'
 import MapComponent from '../../components/Map/index.jsx'
 import FallingBlossoms from '../../components/FallingBlossoms/index.jsx'
