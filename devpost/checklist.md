@@ -35,13 +35,13 @@ Build mode: fast
   Learner check: Open http://localhost:5173 and confirm you see the predicted bloom date and a map of London with pins.
   Commit: `Scaffold project with prediction and London map`
 
-- [ ] **2. Interactive pins with location info on hover**
+- [x] **2. Interactive pins with location info on hover**
   Becomes usable: Hovering over any map pin shows the location name, image, tree count, and bloom date.
   Why now: Turns the map from static to interactive — users can now discover each location's details.
   PRD ref: `prd.md > The Core Journey` (step 2), `scope.md > What "Working" Looks Like`
-  Spec ref: `spec.md > Components (Pin)`, `spec.md > Data Sources (locations.json)`
-  Build: Create Pin component with hover state, add tooltip showing name, image, tree count, bloom date from locations.json.
-  Verify (mechanical): Hover over pins and confirm info appears with correct data from locations.json.
+  Spec ref: `spec.md > Components > Map`, `spec.md > States and Error Handling > Hover state`, `spec.md > Data Sources > locations.json`
+  Build: Use the MapLibre GeoJSON circle layer to render each location and show a popup with its blossom mark, name, tree count, and bloom date from locations.json on hover.
+  Verify (mechanical): Run `npm run build`; confirm MapComponent wires pointer events and feature state to the matching location data.
   Learner check: Hover over a pin on the map and read the info that appears.
   Commit: `Add interactive pins with location info`
 
@@ -49,9 +49,9 @@ Build mode: fast
   Becomes usable: A separate page showing historical facts about cherry blossoms in London.
   Why now: Completes the core journey — users can now explore not just the prediction and map, but also the history.
   PRD ref: `prd.md > The Core Journey` (step 3), `scope.md > What "Working" Looks Like`
-  Spec ref: `spec.md > Components (History, Navbar)`, `spec.md > Data Sources (history-content.json)`, `spec.md > Pages and Navigation`
-  Build: Scrape/create history-content.json, create History page component, add Navbar for navigation, implement state-based routing.
-  Verify (mechanical): Click navbar to switch to History page; confirm content sections appear.
+  Spec ref: `spec.md > Components > History, Navbar`, `spec.md > Data Sources > history-content.json`, `spec.md > Pages and Navigation`
+  Build: Store sourced, paraphrased Royal Parks facts in src/data/history-content.json and render them in the History page; retain the existing Navbar and state-based navigation.
+  Verify (mechanical): Run `npm run build`; confirm the History page renders the data file and includes its source link.
   Learner check: Click the navbar and navigate to the History page; read the historical content.
   Commit: `Add History page with navigation`
 
@@ -59,7 +59,7 @@ Build mode: fast
   Becomes usable: Cherry blossom particles fall from top to bottom across the map, adding atmosphere.
   Why now: Adds the classic game aesthetic the learner specifically requested for the visual feel.
   PRD ref: `prd.md > Look and Feel`, `spec.md > Cozy Classic Game Visual Design`
-  Spec ref: `spec.md > Components (FallingBlossoms)`, `spec.md > File Structure`
+  Spec ref: `spec.md > Components > FallingBlossoms`, `spec.md > File Structure`
   Build: Create FallingBlossoms component with particle animation, integrate into homepage.
   Verify (mechanical): Open the app and confirm cherry blossom particles fall across the screen.
   Learner check: Watch the homepage and confirm cherry blossom animations appear.
@@ -69,7 +69,7 @@ Build mode: fast
   Becomes usable: A visitor counter that increments each time you visit, displayed with a lucky cat image.
   Why now: Adds the interactive "lucky" element and tracks engagement as described in the spec.
   PRD ref: `prd.md > Look and Feel`, `spec.md > Components (HitCounter)`
-  Spec ref: `spec.md > Components (HitCounter)`, `spec.md > Data (localStorage)`
+  Spec ref: `spec.md > Components > HitCounter`, `spec.md > Decisions and Open Issues > Hit counter storage`
   Build: Create HitCounter component reading from localStorage, increment on page load, add lucky cat image.
   Verify (mechanical): Visit the page multiple times or refresh and confirm count increments.
   Learner check: Refresh the page a few times and confirm the visitor count goes up.
@@ -79,9 +79,9 @@ Build mode: fast
   Becomes usable: If the map or data fails to load, a friendly lucky cat appears instead of a crash.
   Why now: Provides graceful degradation as specified — the app never crashes, it just shows a friendly message.
   PRD ref: `prd.md > How This Works, In Plain Language` (step 5), `spec.md > States and Error Handling`
-  Spec ref: `spec.md > Components (ErrorState)`, `spec.md > States and Error Handling`
-  Build: Create ErrorState component with lucky cat image, add error boundary or try-catch for map/prediction loading.
-  Verify (mechanical): Simulate an error (e.g., comment out MapLibre) and confirm friendly error message appears.
+  Spec ref: `spec.md > Components > ErrorState`, `spec.md > States and Error Handling`
+  Build: Keep the existing ErrorState and route failed/non-OK prediction responses and pre-load MapLibre errors into it; catch map setup and layer initialization failures.
+  Verify (mechanical): Run `npm run build`; confirm the prediction response checks and MapLibre pre-load/error paths call the shared fallback.
   Learner check: Intentionally break something (like commenting out MapLibre) and see the lucky cat error message.
   Commit: `Add error handling with lucky cat fallback`
 
@@ -135,3 +135,7 @@ Activity mode: [live app and editor, explicit static fallback, focused alternati
 
      One bullet per revision, no dates. This is how plan adaptation gets recorded,
      and it replaces any separate log. -->
+
+- Map pins use a single GeoJSON feature layer rather than separate DOM Pin components — the rendered map supports feature-state hover and keeps pins aligned as the map zooms.
+- History content is kept in the specified local JSON file and paraphrased from the official Royal Parks source; the original embedded copy contained unsupported historical claims.
+- Error handling now treats non-OK prediction responses and map setup/style-load failures as app errors so the planned fallback can appear.
