@@ -95,7 +95,7 @@ Build mode: fast
      Check a box only after the learner reports back and issues are resolved. -->
 
 - [x] Early usable behavior explored — slice 1 (prediction + map)
-- [ ] Final kick-the-tires exploration and feedback completed
+- [x] Final kick-the-tires exploration and feedback completed
 
 ## Final Review
 
@@ -104,7 +104,9 @@ Build mode: fast
      Complete the box below only after all agreed revisions are verified, committed,
      retried by the learner, and they explicitly confirm readiness. -->
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+- [x] Final review complete — feedback resolved and learner confirms ready to ship
+
+Outcome: Learner reviewed the live forecast, map hover/zoom, and History page; they said it was perfect and requested no further improvements.
 
 ## Code Tour and App Map
 
