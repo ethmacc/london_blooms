@@ -21,6 +21,12 @@ npm run dev
 
 **To demo:** Open the browser, show the homepage with map and onboarding message, hover over pins to display location info, click navbar to view history page, and show the hit counter.
 
+## Sharing
+
+**Public GitHub repository:** https://github.com/ethmacc/london_blooms
+
+The repository is public. A short demo video and learner-completed Devpost submission are still needed for the hackathon entry.
+
 ---
 
 ## Stack Overview
