@@ -5,7 +5,7 @@ function FallingBlossoms() {
   const [blossoms, setBlossoms] = React.useState([])
 
   React.useEffect(() => {
-    const count = 50
+    const count = 22
     const newBlossoms = Array.from({ length: count }).map((_, i) => ({
       id: i,
       left: Math.random() * 100,

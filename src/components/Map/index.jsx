@@ -1,6 +1,8 @@
 import React from 'react'
 import * as maplibregl from 'maplibre-gl'
+import 'maplibre-gl/dist/maplibre-gl.css'
 import locationsData from '../../data/locations.json'
+import './map.css'
 
 function MapComponent({ locationsKey = 'locations' }) {
   const containerRef = React.useRef(null)
@@ -28,43 +30,81 @@ function MapComponent({ locationsKey = 'locations' }) {
     map.on('load', () => {
       const features = locations.map((location, index) => ({
         type: 'Feature',
+        id: index,
         geometry: { type: 'Point', coordinates: [location.lng, location.lat] },
-        properties: { index, name: location.name, trees: location.trees, bloomDate: location.bloomDate },
+        properties: { index },
       }))
 
-      map.addSource('pins', { type: 'geojson', data: { type: 'FeatureCollection', features } })
-      map.addLayer({ id: 'pins', type: 'circle', source: 'pins', paint: { 'circle-radius': 10, 'circle-color': '#D47694' } })
+      map.addSource('locations', {
+        type: 'geojson',
+        data: { type: 'FeatureCollection', features },
+      })
+      map.addLayer({
+        id: 'location-pins',
+        type: 'circle',
+        source: 'locations',
+        paint: {
+          'circle-radius': ['case', ['boolean', ['feature-state', 'hover'], false], 12, 9],
+          'circle-color': '#D47694',
+          'circle-stroke-color': '#F5E6D3',
+          'circle-stroke-width': 3,
+        },
+      })
 
-      locations.forEach((location, index) => {
-        const popupContent = `<div style="background:#F5E6D3;color:#5C4A36;padding:12px;border-radius:6px;border:2px solid #8B6F47;box-shadow:0 4px 12px rgba(0,0,0,0.3);font-family:monospace;font-size:12px;"><div style="font-weight:bold;color:#8B6F47;margin-bottom:4px;">${location.name}</div><div style="margin-bottom:3px;">${location.trees} trees</div><div style="color:#F4C430;font-style:italic;">${location.bloomDate}</div></div>`
+      const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 16, maxWidth: '320px' })
+      let hoveredFeatureId = null
+      map.on('mouseenter', 'location-pins', () => { map.getCanvas().style.cursor = 'pointer' })
+      map.on('mousemove', 'location-pins', (event) => {
+        const feature = event.features?.[0]
+        const location = feature && locations[Number(feature.properties.index)]
+        if (!location) return
+        if (hoveredFeatureId !== null && hoveredFeatureId !== feature.id) {
+          map.setFeatureState({ source: 'locations', id: hoveredFeatureId }, { hover: false })
+        }
+        hoveredFeatureId = feature.id
+        map.setFeatureState({ source: 'locations', id: hoveredFeatureId }, { hover: true })
 
-        const marker = new maplibregl.Marker({ element: document.createElement('div'), color: '#D47694' })
-          .setLngLat([location.lng, location.lat])
-          .addTo(map)
+        const content = document.createElement('div')
+        content.className = 'map-pin-popup'
+        const blossom = document.createElement('span')
+        blossom.className = 'map-pin-popup-image'
+        blossom.setAttribute('role', 'img')
+        blossom.setAttribute('aria-label', 'Cherry blossoms')
+        blossom.textContent = '🌸'
+        const info = document.createElement('span')
+        info.className = 'map-pin-popup-info'
+        const name = document.createElement('strong')
+        name.className = 'map-pin-popup-name'
+        name.textContent = location.name
+        const trees = document.createElement('span')
+        trees.textContent = `${location.trees} trees`
+        const date = document.createElement('span')
+        date.className = 'map-pin-popup-date'
+        date.textContent = location.bloomDate || 'Bloom date to be confirmed'
+        info.append(name, trees, date)
+        content.append(blossom, info)
+        popup.setLngLat(event.lngLat).setDOMContent(content).addTo(map)
+      })
+      map.on('mouseleave', 'location-pins', () => {
+        map.getCanvas().style.cursor = ''
+        if (hoveredFeatureId !== null) {
+          map.setFeatureState({ source: 'locations', id: hoveredFeatureId }, { hover: false })
+          hoveredFeatureId = null
+        }
+        popup.remove()
+      })
 
-        map.on('mouseenter', `pin-${index}`, (e) => {
-          const feature = e.features[0]
-          if (feature) {
-            const popup = new maplibregl.Popup({ closeButton: false })
-            popup.setHTML(popupContent)
-            popup.setLngLat(e.lngLat)
-            popup.addTo(map)
-          }
-        })
-
-        map.on('mouseleave', `pin-${index}`, () => {
-          const popup = map.getPopup()
-          if (popup) {
-            popup.remove()
-          }
-        })
+      map.fitBounds([[minLng, minLat], [maxLng, maxLat]], {
+        padding: { top: 64, right: 64, bottom: 72, left: 64 },
+        maxZoom: 11.7,
+        duration: 0,
       })
     })
 
     return () => { if (map) map.remove() }
   }, [])
 
-  return <div ref={containerRef} style={{ width: '100%', height: '100%', background: '#2D5A3F' }} />
+  return <div ref={containerRef} className="map-canvas" aria-label="Interactive map of cherry blossom locations" />
 }
 
 export default MapComponent

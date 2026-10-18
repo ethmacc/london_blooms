@@ -62,3 +62,49 @@
   color: var(--highlight, #F4C430);
   font-style: italic;
 }
+
+.map-pin-popup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 280px;
+  padding: 12px;
+  border: 2px solid #8B6F47;
+  border-radius: 6px;
+  background: #F5E6D3;
+  color: #5C4A36;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font: 12px/1.4 monospace;
+  text-align: left;
+}
+
+.map-pin-popup-image {
+  display: grid;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  background: #f4c6d4;
+  font-size: 24px;
+}
+
+.map-pin-popup-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.map-pin-popup-name {
+  margin-bottom: 4px;
+  color: #8B6F47;
+}
+
+.map-pin-popup-date {
+  margin-top: 3px;
+  color: #9a6b00;
+  font-style: italic;
+}
+
+.maplibregl-popup { z-index: 5; }
+.maplibregl-popup-content { padding: 0; border-radius: 9px; background: transparent; box-shadow: none; }
+.maplibregl-popup-tip { border-top-color: #F5E6D3; border-bottom-color: #F5E6D3; }

@@ -1,34 +1,43 @@
-/* Cozy Classic Game Theme */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
 :root {
-  --bg-color: #2D5A3F;
-  --primary: #F5E6D3;
-  --secondary: #8B6F47;
-  --accent: #D47694;
-  --highlight: #F4C430;
-  --text: #5C4A36;
+  font-family: 'DM Sans', 'Trebuchet MS', sans-serif;
+  color: #2c3b32;
+  background: #f7f5ed;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --forest: #254b38;
+  --forest-deep: #1c3b2d;
+  --forest-soft: #e7efe7;
+  --cream: #f7f5ed;
+  --paper: #fffdf7;
+  --pink: #d47694;
+  --pink-soft: #f8e7eb;
+  --gold: #d4a846;
+  --ink: #2c3b32;
+  --muted: #758078;
+  --line: #e5e7dc;
+  --radius-card: 22px;
+  --shadow-soft: 0 20px 60px rgba(31, 59, 43, 0.10);
+  font-optical-sizing: auto;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
+
+html { min-width: 320px; min-height: 100%; }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--primary);
+  min-width: 320px;
   min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 18% 0%, rgba(238, 216, 195, 0.38), transparent 36rem),
+    var(--cream);
+  color: var(--ink);
+  font-family: 'DM Sans', 'Trebuchet MS', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-.app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.main-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
+button { font: inherit; }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+::selection { background: #f1d4dd; color: var(--forest-deep); }

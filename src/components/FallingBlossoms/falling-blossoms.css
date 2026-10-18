@@ -13,11 +13,10 @@
   position: absolute;
   top: -20px;
   left: var(--blossom-left, 50%);
-  width: 10px;
-  height: 10px;
-  background-color: var(--accent);
-  border-radius: 50% 50% 0 0;
-  opacity: 0.6;
+  width: 13px;
+  height: 13px;
+  background: url('/assets/blossom-mark.svg') center / contain no-repeat;
+  opacity: 0.38;
   animation: fall var(--blossom-duration, 5s) linear infinite;
   animation-delay: var(--blossom-delay, 0s);
   transform: scale(var(--blossom-scale, 1));

@@ -1,28 +1,27 @@
 .hit-counter {
   position: fixed;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100;
-  background-color: var(--primary);
-  color: var(--text);
-  padding: 12px 24px;
-  border-radius: 8px;
-  border: 2px solid var(--secondary);
+  right: clamp(16px, 3vw, 36px);
+  bottom: 22px;
+  z-index: 25;
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 14px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  gap: 10px;
+  padding: 8px 13px 8px 8px;
+  border: 1px solid rgba(37, 75, 56, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 253, 247, 0.94);
+  color: var(--forest);
+  box-shadow: 0 9px 28px rgba(31, 59, 43, 0.14);
+  backdrop-filter: blur(12px);
 }
 
-.lucky-cat {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
+.lucky-cat { width: 40px; height: 40px; }
+.counter-copy { display: grid; gap: 1px; }
+.counter-copy .pixel-label { color: #8d978e; font-size: 8px; letter-spacing: 0.1em; }
+.counter-copy b { color: var(--forest-deep); font: 700 14px 'Space Mono', monospace; letter-spacing: 0.06em; }
+.counter-flower { align-self: flex-start; margin: 1px 0 0 2px; color: var(--pink); font-size: 12px; }
 
-.counter-text {
-  font-weight: bold;
+@media (max-width: 560px) {
+  .hit-counter { right: 14px; bottom: 14px; gap: 8px; border-radius: 15px; }
+  .lucky-cat { width: 34px; height: 34px; }
 }

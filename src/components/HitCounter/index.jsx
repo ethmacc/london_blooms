@@ -1,31 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import './hit-counter.css'
 
+function readCount() {
+  try { return Number.parseInt(window.localStorage.getItem('bloomsVisitorCount') || '0', 10) || 0 }
+  catch { return 0 }
+}
+
 function HitCounter() {
-  const [count, setCount] = useState(() => {
-    return parseInt(localStorage.getItem('bloomsVisitorCount') || '0', 10)
-  })
+  const [count, setCount] = useState(readCount)
+  const hasCounted = useRef(false)
 
   useEffect(() => {
-    const savedCount = parseInt(localStorage.getItem('bloomsVisitorCount') || '0', 10)
-    if (savedCount !== count) {
-      setCount(savedCount)
-    }
+    if (hasCounted.current) return
+    hasCounted.current = true
+    const nextCount = readCount() + 1
+    try { window.localStorage.setItem('bloomsVisitorCount', String(nextCount)) } catch { /* Count stays session-only when storage is unavailable. */ }
+    setCount(nextCount)
   }, [])
 
-  useEffect(() => {
-    const newCount = count + 1
-    localStorage.setItem('bloomsVisitorCount', newCount.toString())
-  }, [count])
-
   return (
-    <div className="hit-counter">
-      <img 
-        src="https://placehold.co/40x40/8B6F47/FFFFFF?text=%F0%9F%90%8D" 
-        alt="Lucky Cat" 
-        className="lucky-cat"
-      />
-      <span className="counter-text">Visitors: {count}</span>
+    <div className="hit-counter" aria-label={`You are visitor number ${count}`}>
+      <img src="/assets/lucky-cat.svg" alt="Lucky cat" className="lucky-cat" />
+      <span className="counter-copy"><span className="pixel-label">BLOSSOM VISITOR</span><b>{String(count).padStart(4, '0')}</b></span>
+      <span className="counter-flower" aria-hidden="true">✿</span>
     </div>
   )
 }

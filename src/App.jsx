@@ -5,7 +5,6 @@ import History from './pages/History/index.jsx'
 import Navbar from './components/Navbar/index.jsx'
 import HitCounter from './components/HitCounter/index.jsx'
 import ErrorState from './components/ErrorState/index.jsx'
-import MapComponent from './components/Map/index.jsx'
 
 function App({ maplibregl }) {
   const [currentPage, setCurrentPage] = useState('home')
@@ -29,13 +28,6 @@ function App({ maplibregl }) {
     }
     loadPrediction()
     
-    // Increment hit counter on mount
-    const incrementHitCounter = () => {
-      const current = parseInt(localStorage.getItem('bloomsVisitorCount') || '0', 10)
-      localStorage.setItem('bloomsVisitorCount', (current + 1).toString())
-    }
-    incrementHitCounter()
-    
     return () => {
       mounted = false
     }
@@ -55,9 +47,9 @@ function App({ maplibregl }) {
 
   return (
     <div className="app">
-      <Navbar onNav={handleNav} />
+      <Navbar onNav={handleNav} currentPage={currentPage} />
       <main className="main-content">
-        {currentPage === 'home' && <Home prediction={prediction} onHitCounter={() => {}} />}
+        {currentPage === 'home' && <Home prediction={prediction} />}
         {currentPage === 'history' && <History onBack={handleBack} />}
       </main>
       <HitCounter />

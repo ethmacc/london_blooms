@@ -4,11 +4,8 @@ import './error-state.css'
 function ErrorState({ onRetry }) {
   return (
     <div className="error-state">
-      <img 
-        src="https://placehold.co/200x200/8B6F47/FFFFFF?text=%F0%9F%90%8D" 
-        alt="Lucky Cat" 
-        className="error-lucky-cat"
-      />
+      <img src="/assets/lucky-cat.svg" alt="Lucky cat" className="error-lucky-cat" />
+      <p className="error-eyebrow pixel-label">A LITTLE MAP MISHAP</p>
       <h1 className="error-message">gomenasorry</h1>
       <p className="error-desc">Something went wrong. Let's try again!</p>
       <button onClick={onRetry} className="retry-btn">

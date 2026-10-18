@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Cherry blossom">
+  <g fill="#e79bb0" stroke="#fff4e8" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M32 29C20 20 24 7 32 7s12 13 0 22Z"/>
+    <path d="M35 30c3-15 17-16 21-9s-4 18-21 9Z"/>
+    <path d="M34 34c15-3 20 10 14 16s-19 2-14-16Z"/>
+    <path d="M29 35c9 13-1 23-9 20s-9-17 9-20Z"/>
+    <path d="M27 30C12 34 5 23 10 16s19-4 17 14Z"/>
+  </g>
+  <circle cx="32" cy="31" r="5" fill="#efc65a" stroke="#fff4e8" stroke-width="2"/>
+</svg>
