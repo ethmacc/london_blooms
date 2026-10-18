@@ -4,13 +4,19 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 import locationsData from '../../data/locations.json'
 import './map.css'
 
-function MapComponent({ locationsKey = 'locations' }) {
+function MapComponent({ locationsKey = 'locations', onError }) {
   const containerRef = React.useRef(null)
+  const onErrorRef = React.useRef(onError)
+  onErrorRef.current = onError
 
   React.useEffect(() => {
     if (!maplibregl) return
 
     const locations = locationsData[locationsKey]
+    if (!Array.isArray(locations) || locations.length === 0) {
+      onErrorRef.current?.('No map locations are available')
+      return undefined
+    }
     const latitudes = locations.map(l => l.lat)
     const longitudes = locations.map(l => l.lng)
     const minLat = Math.min(...latitudes)
@@ -20,14 +26,27 @@ function MapComponent({ locationsKey = 'locations' }) {
     const centroidLat = (minLat + maxLat) / 2
     const centroidLng = (minLng + maxLng) / 2
 
-    const map = new maplibregl.Map({
-      container: containerRef.current,
-      style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
-      center: [centroidLng, centroidLat],
-      zoom: 12,
+    let map
+    let mapLoaded = false
+    try {
+      map = new maplibregl.Map({
+        container: containerRef.current,
+        style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+        center: [centroidLng, centroidLat],
+        zoom: 12,
+      })
+    } catch (error) {
+      onErrorRef.current?.(error.message || 'Failed to initialize the map')
+      return undefined
+    }
+
+    map.on('error', (event) => {
+      if (!mapLoaded) onErrorRef.current?.(event.error?.message || 'Failed to load the map')
     })
 
     map.on('load', () => {
+      mapLoaded = true
+      try {
       const features = locations.map((location, index) => ({
         type: 'Feature',
         id: index,
@@ -99,6 +118,9 @@ function MapComponent({ locationsKey = 'locations' }) {
         maxZoom: 11.7,
         duration: 0,
       })
+      } catch (error) {
+        onErrorRef.current?.(error.message || 'Failed to prepare the map')
+      }
     })
 
     return () => { if (map) map.remove() }

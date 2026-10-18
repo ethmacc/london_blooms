@@ -16,8 +16,10 @@ function App({ maplibregl }) {
     const loadPrediction = async () => {
       try {
         const response = await fetch('/data/prediction.json')
+        if (!response.ok) throw new Error(`Prediction request failed (${response.status})`)
+        const data = await response.json()
+        if (!data?.nextBloomDate) throw new Error('Prediction data is incomplete')
         if (mounted) {
-          const data = await response.json()
           setPrediction(data)
         }
       } catch (err) {
@@ -49,7 +51,7 @@ function App({ maplibregl }) {
     <div className="app">
       <Navbar onNav={handleNav} currentPage={currentPage} />
       <main className="main-content">
-        {currentPage === 'home' && <Home prediction={prediction} />}
+        {currentPage === 'home' && <Home prediction={prediction} onMapError={() => setError('Failed to load the map')} />}
         {currentPage === 'history' && <History onBack={handleBack} />}
       </main>
       <HitCounter />

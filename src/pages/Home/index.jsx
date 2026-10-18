@@ -4,7 +4,7 @@ import MapComponent from '../../components/Map/index.jsx'
 import FallingBlossoms from '../../components/FallingBlossoms/index.jsx'
 import CursorBlossom from '../../components/CursorBlossom/index.jsx'
 
-function Home({ prediction }) {
+function Home({ prediction, onMapError }) {
   return (
     <div className="home-page">
       <FallingBlossoms />
@@ -51,7 +51,7 @@ function Home({ prediction }) {
           <div className="map-count"><img src="/assets/blossom-mark.svg" alt="" /> <b>12</b> places</div>
         </div>
         <div className="map-frame">
-          <MapComponent locationsKey="locations" />
+          <MapComponent locationsKey="locations" onError={onMapError} />
           <div className="map-compass" aria-hidden="true"><span>N</span><svg viewBox="0 0 24 24"><path d="m12 3 5 14-5-3-5 3 5-14Z"/></svg></div>
           <div className="map-legend"><span className="legend-dot" /> Cherry blossom locations</div>
         </div>

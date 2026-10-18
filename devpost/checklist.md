@@ -75,7 +75,7 @@ Build mode: fast
   Learner check: Refresh the page a few times and confirm the visitor count goes up.
   Commit: `Add hit counter with lucky cat`
 
-- [ ] **6. Error handling with lucky cat fallback**
+- [x] **6. Error handling with lucky cat fallback**
   Becomes usable: If the map or data fails to load, a friendly lucky cat appears instead of a crash.
   Why now: Provides graceful degradation as specified — the app never crashes, it just shows a friendly message.
   PRD ref: `prd.md > How This Works, In Plain Language` (step 5), `spec.md > States and Error Handling`
