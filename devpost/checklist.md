@@ -65,7 +65,7 @@ Build mode: fast
   Learner check: Watch the homepage and confirm cherry blossom animations appear.
   Commit: `Add falling cherry blossoms animation`
 
-- [ ] **5. Hit counter with lucky cat**
+- [x] **5. Hit counter with lucky cat**
   Becomes usable: A visitor counter that increments each time you visit, displayed with a lucky cat image.
   Why now: Adds the interactive "lucky" element and tracks engagement as described in the spec.
   PRD ref: `prd.md > Look and Feel`, `spec.md > Components (HitCounter)`
