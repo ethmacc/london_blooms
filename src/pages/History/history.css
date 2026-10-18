@@ -22,6 +22,8 @@
 .history-card-2 .history-number, .history-card-4 .history-number { background: #edf0df; color: #6b795a; }
 .history-footer { display: flex; justify-content: center; align-items: center; gap: 9px; margin: 28px auto 0; color: #829087; font-size: 11px; text-align: center; }
 .history-footer span { color: var(--pink); font-size: 16px; }
+.history-source { margin: 12px 0 0; color: #829087; font-size: 11px; text-align: center; }
+.history-source a { color: var(--forest-deep); text-underline-offset: 3px; }
 
 @media (max-width: 680px) {
   .history-page { padding-top: 34px; }

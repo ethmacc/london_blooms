@@ -45,7 +45,7 @@ Build mode: fast
   Learner check: Hover over a pin on the map and read the info that appears.
   Commit: `Add interactive pins with location info`
 
-- [ ] **3. History page with Royal Parks content**
+- [x] **3. History page with Royal Parks content**
   Becomes usable: A separate page showing historical facts about cherry blossoms in London.
   Why now: Completes the core journey — users can now explore not just the prediction and map, but also the history.
   PRD ref: `prd.md > The Core Journey` (step 3), `scope.md > What "Working" Looks Like`
