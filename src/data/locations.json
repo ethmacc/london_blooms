@@ -1,0 +1,100 @@
+{
+  "locations": [
+    {
+      "name": "Greenwich Park - Cherry Blossom Avenue",
+      "trees": "130+",
+      "link": "https://www.google.com/maps/search/?api=1&query=51.4772,-0.0014",
+      "access": "Free",
+      "lat": 51.4772,
+      "lng": -0.0014
+    },
+    {
+      "name": "Kew Gardens - Cherry Walk",
+      "trees": "40-60",
+      "link": "https://www.google.com/maps/search/?api=1&query=51.4752,-0.2956",
+      "access": "Paid",
+      "lat": 51.4752,
+      "lng": -0.2956
+    },
+    {
+      "name": "Kyoto Garden, Holland Park",
+      "trees": "2-5",
+      "link": "https://www.google.com/maps/search/?api=1&query=51.503111,-0.204607",
+      "access": "Free",
+      "lat": 51.503111,
+      "lng": -0.204607
+    },
+    {
+      "name": "St James's Park - Blue Bridge",
+      "trees": "3-6",
+      "link": "https://www.google.com/maps/search/?api=1&query=51.5026,-0.1345",
+      "access": "Free",
+      "lat": 51.5026,
+      "lng": -0.1345
+    },
+    {
+      "name": "Regent's Park - Avenue Gardens",
+      "trees": "20-40",
+      "link": "https://www.google.com/maps/search/?api=1&query=51.52559,-0.14774",
+      "access": "Free",
+      "lat": 51.52559,
+      "lng": -0.14774
+    },
+    {
+      "name": "Kensington Gardens - Lancaster Gate",
+      "trees": "20-40",
+      "link": "https://www.google.com/maps/search/?api=1&query=51.5025,-0.177778",
+      "access": "Free",
+      "lat": 51.5025,
+      "lng": -0.177778
+    },
+    {
+      "name": "St Paul's Churchyard",
+      "trees": "2-4",
+      "link": "https://www.google.com/maps/search/?api=1&query=51.51377,-0.09774",
+      "access": "Free",
+      "lat": 51.51377,
+      "lng": -0.09774
+    },
+    {
+      "name": "Battersea Park - Spring Tree Walk",
+      "trees": "30-60",
+      "link": "https://www.google.com/maps/search/?api=1&query=51.4792,-0.1552",
+      "access": "Free",
+      "lat": 51.4792,
+      "lng": -0.1552
+    },
+    {
+      "name": "Cecile Park, Crouch End",
+      "trees": "40-60",
+      "link": "https://www.google.com/maps/search/?api=1&query=51.5772,-0.1209",
+      "access": "Free",
+      "lat": 51.5772,
+      "lng": -0.1209
+    },
+    {
+      "name": "Alexandra Palace",
+      "trees": "15-30",
+      "link": "https://www.google.com/maps/search/?api=1&query=51.5941,-0.1302",
+      "access": "Free",
+      "lat": 51.5941,
+      "lng": -0.1302
+    },
+    {
+      "name": "Queen Elizabeth Olympic Park",
+      "trees": "33",
+      "link": "https://www.google.com/maps/search/?api=1&query=51.5500,-0.0184",
+      "access": "Free",
+      "lat": 51.5500,
+      "lng": -0.0184
+    },
+    {
+      "name": "Herne Hill - Winterbrook Road",
+      "trees": "50-80",
+      "link": "https://www.google.com/maps/search/?api=1&query=51.4522,-0.1028",
+      "access": "Free",
+      "lat": 51.4522,
+      "lng": -0.1028
+    }
+  ]
+}

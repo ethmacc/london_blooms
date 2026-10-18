@@ -1,0 +1,28 @@
+.hit-counter {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  background-color: var(--primary);
+  color: var(--text);
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 2px solid var(--secondary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.lucky-cat {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.counter-text {
+  font-weight: bold;
+}

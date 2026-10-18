@@ -1,0 +1,50 @@
+.error-state {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  text-align: center;
+}
+
+.error-lucky-cat {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 24px;
+}
+
+.error-message {
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 12px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.error-desc {
+  font-size: 16px;
+  color: var(--primary);
+  margin-bottom: 24px;
+}
+
+.retry-btn {
+  background-color: var(--secondary);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: 'Courier New', Courier, monospace;
+  transition: all 0.2s;
+}
+
+.retry-btn:hover {
+  background-color: var(--accent);
+}

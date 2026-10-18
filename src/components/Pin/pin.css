@@ -1,0 +1,58 @@
+.pin {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+}
+
+.pin-tooltip {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary);
+  color: var(--text);
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid var(--secondary);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s;
+  white-space: nowrap;
+  z-index: 100;
+  min-width: 150px;
+}
+
+.pin:hover .pin-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.pin-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+}
+
+.pin-info {
+  text-align: center;
+}
+
+.pin-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--secondary);
+  margin-bottom: 4px;
+}
+
+.pin-trees {
+  font-size: 12px;
+  color: var(--text);
+}
