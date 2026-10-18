@@ -124,7 +124,7 @@ Outcome: Learner reviewed the live forecast, map hover/zoom, and History page; t
 Activity and evidence: Focused alternative connected to the live build investigation: `src/components/FallingBlossoms/index.jsx` supplied CSS custom properties; `src/components/FallingBlossoms/falling-blossoms.css` consumed them. Browser computed styles first showed `animation: none`, then `fall`; `npm run build` passed.
 Route and stops: Reference-only route in `devpost/app-map.html`: `src/data/locations.json` → `src/components/Map/index.jsx` (`MapComponent`, `mousemove`, `setFeatureState`) → rendered popup.
 Edit outcome: No optional wrap-up edit; the required animation fix was kept and verified in the live page and production build.
-Reflection: Optional transfer question offered; response optional and not received during wrap-up.
+Reflection: Answered; personal response saved in the ignored `devpost/learner-profile.md`.
 Activity mode: Focused alternative connected to prior live browser and build verification.
 
 ## Revisions
