@@ -117,15 +117,15 @@ Outcome: Learner reviewed the live forecast, map hover/zoom, and History page; t
      Keep personal reflection in the ignored profile, not this public record.
      Honor completed older code tours/maps; don't reopen them for new fields. -->
 
-- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
+- [x] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
 - [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+- [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence: [what actually happened; real document/test/code references; unfinished work if interrupted]
-Route and stops: [actual paths and symbols; guided stops completed, or reference-only route]
-Edit outcome: [tried/kept/reverted/declined/not applicable; verification if changed]
-Reflection: [offered/answered/declined/already covered — personal answer belongs only in the ignored profile]
-Activity mode: [live app and editor, explicit static fallback, focused alternative, prior practice, or recap]
+Activity and evidence: Focused alternative connected to the live build investigation: `src/components/FallingBlossoms/index.jsx` supplied CSS custom properties; `src/components/FallingBlossoms/falling-blossoms.css` consumed them. Browser computed styles first showed `animation: none`, then `fall`; `npm run build` passed.
+Route and stops: Reference-only route in `devpost/app-map.html`: `src/data/locations.json` → `src/components/Map/index.jsx` (`MapComponent`, `mousemove`, `setFeatureState`) → rendered popup.
+Edit outcome: No optional wrap-up edit; the required animation fix was kept and verified in the live page and production build.
+Reflection: Optional transfer question still to be offered.
+Activity mode: Focused alternative connected to prior live browser and build verification.
 
 ## Revisions
 

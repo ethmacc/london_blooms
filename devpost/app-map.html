@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>London Blooms — App Map</title>
+  <style>
+    :root { color-scheme: light; --forest: #254b38; --pink: #d47694; --cream: #fffdf7; --ink: #31453a; --muted: #68796f; --line: #e7e9df; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f6f5ed; color: var(--ink); font: 16px/1.65 system-ui, sans-serif; }
+    main { width: min(900px, calc(100% - 32px)); margin: 40px auto 72px; }
+    header, section { margin-bottom: 18px; padding: clamp(20px, 4vw, 34px); border: 1px solid var(--line); border-radius: 20px; background: var(--cream); box-shadow: 0 10px 30px #254b380b; }
+    .eyebrow { margin: 0 0 8px; color: #9a6674; font-size: 12px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+    h1, h2 { color: var(--forest); line-height: 1.2; }
+    h1 { margin: 0 0 10px; font-size: clamp(30px, 5vw, 46px); letter-spacing: -.04em; }
+    h2 { margin: 0 0 12px; font-size: 21px; }
+    p { margin: 8px 0; }
+    .muted, small { color: var(--muted); }
+    a { color: #345d46; text-underline-offset: 3px; }
+    code { padding: 2px 5px; border-radius: 5px; background: #f0f1e9; font: .92em ui-monospace, monospace; overflow-wrap: anywhere; }
+    figure { margin: 20px 0 0; padding: 14px; border: 1px solid var(--line); border-radius: 14px; background: #fbfaf3; }
+    svg { display: block; width: 100%; height: auto; }
+    .route, .pointers { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    .route li, .pointers li { padding: 14px 16px; border-left: 3px solid var(--pink); border-radius: 0 10px 10px 0; background: #faf8f0; }
+    .route strong, .pointers strong { display: block; color: var(--forest); }
+    .meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; }
+    .meta p { margin: 0; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <p class="eyebrow">A small guide to the code</p>
+      <h1>London Blooms</h1>
+      <p>A local web app that pairs a cherry-blossom forecast with London viewing spots, a hoverable map, and a short history of the trees.</p>
+      <figure>
+        <svg viewBox="0 0 760 190" role="img" aria-labelledby="flow-title flow-desc" xmlns="http://www.w3.org/2000/svg">
+          <title id="flow-title">From a map hover to a location popup</title>
+          <desc id="flow-desc">Location records flow into the Map component. Hovering a map pin reads its matching record and displays the location details in a popup.</desc>
+          <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#9a6674"/></marker></defs>
+          <g fill="#fffdf7" stroke="#e7e9df" stroke-width="2">
+            <rect x="18" y="52" width="195" height="82" rx="14"/><rect x="282" y="52" width="195" height="82" rx="14"/><rect x="546" y="52" width="195" height="82" rx="14"/>
+          </g>
+          <g fill="none" stroke="#9a6674" stroke-width="2" marker-end="url(#arrow)"><path d="M216 93 H270"/><path d="M480 93 H534"/></g>
+          <g fill="#254b38" font-family="system-ui,sans-serif" text-anchor="middle">
+            <text x="115" y="84" font-size="14" font-weight="700">Location records</text><text x="115" y="108" font-size="12">src/data/locations.json</text>
+            <text x="379" y="84" font-size="14" font-weight="700">MapComponent</text><text x="379" y="108" font-size="12">map layer + hover events</text>
+            <text x="643" y="84" font-size="14" font-weight="700">Visible popup</text><text x="643" y="108" font-size="12">name · trees · bloom date</text>
+          </g>
+        </svg>
+      </figure>
+    </header>
+
+    <section>
+      <h2>A short reference route</h2>
+      <p class="muted">Use this route to find where a pin’s details come from. It is a reference, not a claim that we toured these files together.</p>
+      <ol class="route">
+        <li><strong>1. The data — <code>src/data/locations.json</code></strong>Each place supplies the coordinates and details that the map can show.</li>
+        <li><strong>2. The interaction — <code>src/components/Map/index.jsx</code>, <code>MapComponent</code></strong>Search for <code>mousemove</code> and <code>setFeatureState</code>. The hovered GeoJSON feature is matched back to a location record.</li>
+        <li><strong>3. The result — <code>popup.setLngLat(...).setDOMContent(...).addTo(map)</code></strong>The popup follows the pointer and displays the matched location name, tree count, and bloom date.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>To change this, start here</h2>
+      <ul class="pointers">
+        <li><strong>Forecast date or confidence</strong>Update <code>public/data/prediction.json</code>; <code>src/App.jsx</code> loads it and passes it into the Home page.</li>
+        <li><strong>Map places or their details</strong>Edit <code>src/data/locations.json</code>. The map reads these records for both pin positions and popups.</li>
+        <li><strong>History stories</strong>Edit <code>src/data/history-content.json</code>. <code>src/pages/History/index.jsx</code> renders the cards and links to their Royal Parks source.</li>
+        <li><strong>Blossom motion</strong>Start at <code>src/components/FallingBlossoms/index.jsx</code> for particle timing and <code>src/components/FallingBlossoms/falling-blossoms.css</code> for the keyframes.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>A practice to reuse</h2>
+      <p>The falling blossoms initially appeared but did not animate: the React component supplied unitless values to CSS timing properties. Checking the browser’s computed style exposed <code>animation: none</code>; adding units changed it to <code>fall</code>, and the production build passed. For another UI issue, trace the value from its source through the style rule to the browser’s computed result, then verify the visible behavior.</p>
+    </section>
+
+    <section>
+      <h2>Run it again</h2>
+      <div class="meta">
+        <p><strong>From the project folder</strong><br><code>npm install</code><br><code>npm run dev</code><br>Open the local URL printed by Vite (usually <code>http://localhost:5173</code>).</p>
+        <p><strong>Snapshot details</strong><br>Code snapshot: <code>62120a6</code><br>This map is a standalone offline guide and may drift if the code changes later.</p>
+      </div>
+    </section>
+    <p class="muted"><small>Keyboard accessible · no scripts, external fonts, or network resources required by this guide.</small></p>
+  </main>
+</body>
+</html>
