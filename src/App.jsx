@@ -7,7 +7,7 @@ import HitCounter from './components/HitCounter/index.jsx'
 import ErrorState from './components/ErrorState/index.jsx'
 import MapComponent from './components/Map/index.jsx'
 
-function App({ maplibregl, accessToken }) {
+function App({ maplibregl }) {
   const [currentPage, setCurrentPage] = useState('home')
   const [prediction, setPrediction] = useState(null)
   const [error, setError] = useState(null)
